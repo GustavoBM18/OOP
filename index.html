@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradigmas de la OOP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px; 
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Conceptos de Programación Orientada a Objetos</h1>
+    
+    <h2>1. Herencia</h2>
+    <p>La herencia es un mecanismo que permite a una clase (llamada clase derivada o subclase) heredar características (atributos y métodos) de otra clase (llamada clase base o superclase). Esto promueve la reutilización del código y la creación de jerarquías de clases.</p>
+    <pre><code class="language-python">
+class Animal:
+    def hacer_sonido(self):
+        print("Sonido de animal")
+
+class Perro(Animal):
+    def hacer_sonido(self):
+        print("Ladrido")
+    </code></pre>
+
+    <h2>2. Polimorfismo</h2>
+    <p>El polimorfismo permite a los objetos de diferentes clases ser tratados como objetos de una clase común. Se manifiesta en la capacidad de un método para tomar muchas formas. El polimorfismo se logra a través de la sobrecarga y la redefinición de métodos.</p>
+    <pre><code class="language-python">
+def hacer_sonido(animales):
+    for animal in animales:
+        animal.hacer_sonido()
+
+perro = Perro()
+animal = Animal()
+
+hacer_sonido([perro, animal])
+    </code></pre>
+
+    <h2>3. Encapsulamiento</h2>
+    <p>El encapsulamiento es el concepto de ocultar los detalles internos de una clase y exponer solo lo necesario a través de una interfaz pública. Esto se logra utilizando modificadores de acceso y métodos de acceso (getters y setters) para proteger los datos y garantizar su integridad.</p>
+    <pre><code class="language-python">
+class CuentaBancaria:
+    def __init__(self, saldo):
+        self.__saldo = saldo
+    
+    def obtener_saldo(self):
+        return self.__saldo
+    
+    def depositar(self, cantidad):
+        if cantidad > 0:
+            self.__saldo += cantidad
+    </code></pre>
+
+    <h2>4. Abstracción</h2>
+    <p>La abstracción se refiere a la capacidad de enfocarse en los aspectos esenciales de un objeto mientras se ocultan los detalles complejos. Permite a los programadores trabajar con una representación simplificada de un objeto.</p>
+    <pre><code class="language-python">
+from abc import ABC, abstractmethod
+
+class Figura(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Rectangulo(Figura):
+    def __init__(self, ancho, alto):
+        self.ancho = ancho
+        self.alto = alto
+    
+    def area(self):
+        return self.ancho * self.alto
+    </code></pre>
+
+</body>
+</html>
